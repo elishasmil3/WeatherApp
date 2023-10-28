@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import WeatherReport from "./components/WeatherCard";
+import WeatherReport from "./components/weatherReport";
 
 function App() {
   const [query, setQuery] = useState("India");
@@ -13,15 +13,19 @@ function App() {
     <>
       <div className="font-sans min-h-screen w-full flex justify-center items-center flex-col gap-6 ">
         <div className="min-w-lg min-h-screen-sm bg-gradient-to-r rounded-md from-slate-800  to-cyan-800 p-12 shadow-md">
-          <div className="flex border-2 rounded">
+          <h1 className="text-6xl text-white text-center font-extrabold uppercase my-4">
+            Weather Report
+          </h1>
+          <div className="flex justify-center rounded">
             <input
               type="text"
-              className="px-4 py-2 w-80 outline-0"
+              className="px-4 py-2 w-80 outline-0 hover:bg-slate-200 duration-500 active:bg-slate-500"
               placeholder="Search..."
               onChange={(e) => setTempQuery(e.target.value)}
+              onkeypress={handleSubmit}
             />
             <button
-              className="flex items-center justify-center px-4 border-l bg-slate-50"
+              className="flex items-center justify-center px-4 border-l bg-slate-50 hover:bg-slate-200 duration-500"
               onClick={handleSubmit}
             >
               <svg
@@ -34,7 +38,7 @@ function App() {
               </svg>
             </button>
           </div>
-          <WeatherReport />
+          <WeatherReport query={query} />
         </div>
       </div>
     </>
